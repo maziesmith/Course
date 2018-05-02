@@ -1,0 +1,5 @@
+Install arduino's driver for macOS High sierra 10.13.4
+1. Download driver from http://www.wch.cn/download/CH341SER_MAC_ZIP.html
+2. Follow it's instructions and at System Preferences > Security and Privacy > allow download from some websites that the installing
+driver is asking for.
+3. done.
