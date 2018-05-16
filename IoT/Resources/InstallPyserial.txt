@@ -1,0 +1,7 @@
+Install pyserial
+1. Open cmd
+2. Goto > C:\Users\ITStudent\AppData\Local\Programs\Python\Python36-32>
+3. Type "python -m pip install pyserial"
+
+4. Remove b'\r\n
+int(ser.readline().rstrip());
