@@ -1,4 +1,8 @@
-Sketch>Include Library>Add .ZIP Library and select the DHTLib.zip file.
+// Sketch>Include Library>Add .ZIP Library and select the DHTLib.zip file.
+// Install
+// DHT
+// Andafruit unified sensor
+// Andafruit playground
 
 //Code
 #include <DHT.h>
