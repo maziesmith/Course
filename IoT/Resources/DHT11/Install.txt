@@ -1,23 +1,29 @@
 Sketch>Include Library>Add .ZIP Library and select the DHTLib.zip file.
 
 //Code
-#include <dht.h>
-
-dht DHT;
-
+#include <DHT.h>
 #define DHT11_PIN 7
+DHT dht(DHT11_PIN, DHT11);
 
-void setup(){
-  Serial.begin(9600);
+void setup() {
+    Serial.begin(9600);
+    dht.begin();
 }
 
-void loop()
-{
-  int chk = DHT.read11(DHT11_PIN);
-  Serial.print("Temperature = ");
-  Serial.println(DHT.temperature);
-  Serial.print("Humidity = ");
-  Serial.println(DHT.humidity);
-  delay(1000);
-}
+void loop() {
 
+    float humidity = dht.readHumidity();
+    float temperature = dht.readTemperature();
+
+   if (isnan(humidity) || isnan(temperature)) {
+      Serial.println("Failed to read from DHT sensor!");
+      return;
+    }
+
+    Serial.print("Temperature = ");
+    Serial.println(temperature);
+    Serial.print("Humidity = ");
+    Serial.println(humidity);
+
+    delay(1000);
+}
