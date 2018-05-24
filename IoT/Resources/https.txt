@@ -1,0 +1,5 @@
+Example
+http.begin("https://www.reddit.com/iphone.json","f8d1965323111e86e6874aa93cc7c52969fb22bf");
+
+000webhosting
+70C8BCB5F41A245EBCB2E386BEBFE0169C48FC0B
