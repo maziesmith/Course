@@ -1,0 +1,10 @@
+1. Install mosquitto on windows
+
+http://www.iotsharing.com/2017/06/4-steps-to-install-mosquitto
+-mqtt-on-windows.html
+
+2. Use MQTT on Nodemcu
+https://www.teachmemicro.com/nodemcu-mqtt-tutorial/
+
+
+mosquitto_sub -h broker.shiftr.io -t "#" -u try -P try -q 2
