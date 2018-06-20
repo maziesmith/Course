@@ -18,10 +18,11 @@
         <activity android:name=".FireBaseActivity" />
         <activity android:name=".Week7_File" />
         <activity android:name=".Week8_DBView" />
-        <activity android:name=".DB_MainApp">
-        </activity>
+        <activity android:name=".DB_MainApp" />
         <activity android:name=".Week8_DBAdd" />
         <activity android:name=".Week10_Graphics">
+        </activity>
+        <activity android:name=".Week2_UI">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
