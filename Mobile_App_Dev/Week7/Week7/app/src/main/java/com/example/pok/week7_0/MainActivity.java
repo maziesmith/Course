@@ -1,5 +1,7 @@
 package com.example.pok.week7_0;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,18 +19,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final DatabaseHandler db = new DatabaseHandler(this);
+        int numOfmembers = 5;
 
-        db.addContact(new Contact("Ekarat","0899999999"));
+        for(int i=1; i<numOfmembers; i++) {
+           // db.addContact(new Contact("Ekarat_"+i, "00"+i));
+        }
 
         final List<Contact> contacts = db.getAllContacts();
 
-        String[] datas = new String[contacts.size()];
-        for(int i=0; i<datas.length; i++)
-        {
-            datas[i]= contacts.get(i)._name;
-        }
-        CustomAdapter adapter = new CustomAdapter(getApplicationContext(), datas);
+        final CustomAdapter adapter = new CustomAdapter(getApplicationContext(), contacts);
         ListView listView = (ListView)findViewById(R.id.listView1);
         listView.setAdapter(adapter);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                final int posToRemove = position;
+                final Contact _contact = adapter._contacts.get(posToRemove);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog.setTitle("Delete?");
+                dialog.setMessage("Are you sure you want to delete [" +
+                        _contact._id + "] " +
+                        _contact._name + "  " +
+                        _contact._phone_number);
+
+                dialog.setNegativeButton("Cancel", null);
+                dialog.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter._contacts.remove(posToRemove);
+                        db.deleteContact(_contact);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
+                dialog.show();
+                return false;
+            }
+        });
     }
 }
